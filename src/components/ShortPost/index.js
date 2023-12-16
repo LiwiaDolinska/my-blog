@@ -1,6 +1,6 @@
 function ShortPost({ author, title, text }) {
 
-    return <section>
+    return <section className="box-border h-32 w-1000 border-1">
         <div>
             {`${author.firstName} ${author.lastName}`}
         </div>
