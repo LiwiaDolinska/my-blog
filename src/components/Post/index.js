@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { ColorRing } from 'react-loader-spinner'
 
 function Post() {
-    const [loading, setLoading] = useState(true)
     const [singlePost, setSinglePost] = useState(null)
     const params = useParams();
     useEffect(() => {
@@ -14,14 +13,16 @@ function Post() {
             })
 
     }, [])
-
     if (singlePost === null) {
         return <ColorRing />
     }
+    const data = new Date(singlePost.createdAt)
+    const localDate = data.getDate() + "-" + (data.getMonth() + 1) + "-" + data.getFullYear();
 
     return <>
         <p>{singlePost.author.firstName}</p>
         {singlePost.text.map((paragraph) => <p>{paragraph}</p>)}
+        <p>{localDate}</p>
 
     </>
 }
